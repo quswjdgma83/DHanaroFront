@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="get" action="" name="myform">
+      이름: <input type="text" name="username" /> <br />
+      전화번호 : <input type="text" name="userphone" /> <br />
+
+      성별:
+      <input type="radio" name="gender" id="" value="M" />남성&nbsp;
+      <input type="radio" name="gender" id="" value="F" />여성<br />
+
+      나이:
+      <input type="radio" name="age" id="" value="1" />10대이하&nbsp;
+      <input type="radio" name="age" id="" value="2" />10~20&nbsp;
+      <input type="radio" name="age" id="" value="3" />20~30&nbsp;
+      <input type="radio" name="age" id="" value="4" />30~40<br />
+
+      좋아하는것:
+      <input type="checkbox" name="language" id="" value="1" />자바&nbsp;
+      <input type="checkbox" name="language" id="" value="2" />c&nbsp;
+      <input type="checkbox" name="language" id="" value="3" />python&nbsp;
+      <input type="checkbox" name="language" id="" value="4" />javascript&nbsp;
+
+      <br />
+      <select name="fruit">
+        <option>==선택하세요==</option>
+        <option value="1">사과</option>
+        <option value="2">배</option>
+        <option value="3">귤</option>
+        <option value="4">오렌지</option>
+      </select>
+
+      <br />
+      <textarea name="introduce" id="" cols="30" rows="10">보내는 값</textarea>
+      <label for="id속성">이름: </label>
+      <input type="text" name="username" id="username" />
+
+      선택하세요<br />
+
+      <fieldset>
+        <legend>메뉴를 선택하세요</legend>
+        <label for="food1">김치찌개</label>
+        <input type="checkbox" name="food" id="food1" />&nbsp;
+        <label for="food2">비지찌개</label>
+        <input type="checkbox" name="food" id="food2" />&nbsp;
+        <label for="food3">된장국</label>
+        <input type="checkbox" name="food" id="food3" />&nbsp;
+        <label for="food4">국밥</label>
+        <input type="checkbox" name="food" id="food4" />&nbsp;
+      </fieldset>
+
+      <label for="email">이메일</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        placeholder="이메일을 입력하세요"
+        <!--
+        disabled: 아예 못씀, 서버로 전송x
+        readonly: 값 입력을 못받는다. 그러나 서버로 전송은 한다.
+        size: 외적으로 바라보는 크기
+        maxlength: 텍스트 크기를 제한한다. 한글과 영어 모두 한 글자로 인식한다.
+        --
+      />
+      <br />
+    <input type="file" name="file" /> <br/>
+    <input type="hidden" name="idcheckyn" value="Y" />
+    <button>등록</button>
+
+      <button type="button" onclick="goSend()">보내기</button>
+
+      시작일: <input type="date" name="sdate"> ~
+      종료일: <input type="date" name="edate"> <br/>
+    </form>
+  </body>
+</html>
+
+<script>
+  function goSend() {
+    //폼을 전송
+    //1. 폼에 대한 객체 참조를 가지고 와야한다
+    var frm = document.myform; //폼 객체에 대한 참조를 가져온다
+    frm.submit(); //서버로 정보를 전송한다
+  }
+</script>
+

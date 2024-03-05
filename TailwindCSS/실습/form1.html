@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+</head>
+
+
+<body class="mx-10 my-10">
+    <form>
+        <label class="block">
+          <span class="block text-sm font-medium text-slate-700">Username</span>
+          <!-- Using form state modifiers, the classes can be identical for every input -->
+          <input type="text" value="홍길동" disabled class="mt-1 block w-full px-3 py-2 bg-white border
+           border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+            disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+            invalid:border-pink-500 invalid:text-pink-600
+            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+          "/>
+        </label>
+        <label class="block">
+            <span class="block text-sm font-medium text-slate-700">Email</span>
+            <input type="email" value=""   required 
+              class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 
+              rounded-md text-sm shadow-sm   placeholder-slate-400
+              focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+              invalid:border-pink-500 invalid:text-pink-600
+              required:border-pink-500   required:text-pink-500
+              focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+            "/>
+          </label>
+
+          <label class="block">
+            <span class="block text-sm font-medium text-slate-700">Password</span>
+            <input type="password" value="1234"  class="mt-1 block w-full px-3 py-2 bg-white border
+             border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+              focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+              invalid:border-pink-500 invalid:text-pink-600
+              focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+            "/>
+          </label>
+      </form>
+
+    
+</body>
+</html>

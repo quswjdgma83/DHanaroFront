@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>모던 스크립트로 카운터 만들기</h1>
+
+    <div id="counter">0</div>
+    <button type="button" id="btnIncrease">++</button>
+    <button type="button" id="btnDecrease">++</button>
+  </body>
+</html>
+<script>
+  const counter = document.querySelector("#couter");
+  const btnIncrease = document.querySelector("#btnIncrease");
+  const btnDecrease = document.querySelector("#btnDecrease");
+
+  btnIncrease.onclick = () => {
+    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+  };
+  btnDecrease.onclick = () => {
+    counter.innerHTML = parseInt(counter.innerHTML) - 1;
+  };
+</script>

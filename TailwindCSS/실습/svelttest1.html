@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Svelte 4 App</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/svelte@4.0.0/dist/index.mjs"></script>
+  <script>
+    const { onMount } = window['svelte'];
+
+    const app = new window['svelte'].App({
+      target: document.getElementById('app'),
+      hydrate: true,
+      // 여기에 Svelte 앱 컴포넌트를 동적으로 로드하는 코드를 추가
+    });
+  </script>
+</body>
+</html>

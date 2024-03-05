@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid red;
+        border-collapse: collapse; /*경계를 한줄만 나오도록*/
+      }
+
+      th,
+      td {
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th colspan="2">정보</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3">홍길동</td>
+          <td>나이</td>
+          <td>23</td>
+        </tr>
+        <tr>
+          <td>전화번호</td>
+          <td>010-0000-0000</td>
+        </tr>
+        <tr>
+          <td>주소</td>
+          <td>서울시 관악구</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

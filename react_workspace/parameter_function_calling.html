@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매개변수 함수 호출</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const MyButton = ({calcFunc}) => {
+            return(
+                <div>
+                    <button type="button" onClick={() => calcFunc(1)}>더하기</button>
+                    <button type="button" onClick={() => calcFunc(2)}>빼기</button>
+                    <button type="button" onClick={() => calcFunc(3)}>곱하기</button>
+                    <button type="button" onClick={() => calcFunc(4)}>나누기</button>
+                    <h4>매개변수를 넘길 때는 익명함수를 활용해서 하자</h4>
+                </div>
+
+            )
+        }
+
+        const App = () => {
+            const [x, setX] = React.useState(0);
+            const [y, setY] = React.useState(0);
+            const [result, setResult] = React.useState(0);
+
+            const changeX = e => setX(parseInt(e.target.value))
+            const changeY = e => setY(parseInt(e.target.value))
+
+            const calc = (oper) => {
+                switch(oper){
+                    case 1: setResult(x+y); break;
+                    case 2: setResult(x-y); break;
+                    case 3: setResult(x*y); break;
+                    case 4: setResult((x/y).toFixed(0)); break;
+                }
+            }
+
+            return (
+                <div>
+                    x: <input type="text" value={x} onChange={changeX}/>
+                    <br />
+                    y: <input type="text" value={y} onChange={changeY}/>
+                    <p>결과 : {result}</p>
+
+                    <MyButton calcFunc={calc}/>
+                </div>
+            )
+        }
+        
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        ); 
+                                
+    </script>
+</body>
+</html>
+

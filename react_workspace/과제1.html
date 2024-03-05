@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Input test</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      function InputTest() {
+        const [name, setName] = React.useState("");
+        const [value1, setValue1] = React.useState("");
+        const [value2, setValue2] = React.useState("");
+        const [value3, setValue3] = React.useState("");
+        const [result1, setResult1] = React.useState();
+        const [result2, setResult2] = React.useState();
+
+        const valueChange = (e) => {
+          if (e.target.id === "name") setName(e.target.value);
+          else if (e.target.id === "value1") setValue1(e.target.value);
+          else if (e.target.id === "value2") setValue2(e.target.value);
+          else if (e.target.id === "value3") setValue3(e.target.value);
+        };
+
+        const num1 = parseFloat(value1);
+        const num2 = parseFloat(value2);
+        const num3 = parseFloat(value3);
+
+        const calculateResult = () => {
+          setResult1(num1 + num2 + num3);
+          setResult2((num1 + num2 + num3) / 3);
+        };
+
+        return (
+          <div>
+            이름을 입력하세요:{" "}
+            <input type="text" id="name" onChange={valueChange} />
+            <br />
+            국어점수: <input type="text" id="value1" onChange={valueChange} />
+            <br />
+            영어점수: <input type="text" id="value2" onChange={valueChange} />
+            <br />
+            수학점수: <input type="text" id="value3" onChange={valueChange} />
+            <br />
+            <button type="button" onClick={calculateResult}>
+              추가
+            </button>
+            결과:{" "}
+            <h2>
+              {name}의 점수는 {value1} {value2} {value3} 합계: {result1} 평균:{" "}
+              {result2}
+            </h2>
+            <br />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<InputTest />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

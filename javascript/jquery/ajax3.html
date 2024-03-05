@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <h1>ajax html jquery버전</h1>
+
+    <div
+      id="result"
+      style="border: 1px solid red; width: 400px; height: 200px"
+    ></div>
+
+    <button type="button" id="btnSend">비동기 호출</button>
+  </body>
+</html>
+
+<!-- <script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    fetch("http://127.0.0.1:8080/getUserInfo").then((res) => {});
+  });
+</script> -->
+<script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    $.ajax({ url: "http://127.0.0.1:8080/getUserInfo" })
+      .done((res) => {
+        console.log(res);
+      })
+      .fail((res, msg, status) => {
+        console.log(msg);
+      });
+  });
+</script>

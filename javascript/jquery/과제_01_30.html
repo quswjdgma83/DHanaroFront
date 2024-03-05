@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>과제_01_30</h1>
+
+    이름: <input type="text" name="name" id="name" /> <br />
+    근무 시간: <input type="text" name="workTime" id="workTime" /> <br />
+    시간당 급여: <input type="text" name="payPerTime" id="payPerTime" /> <br />
+
+    <button type="button" id="btnSend" style="margin: 30px 0">
+      비동기 호출
+    </button>
+
+    <div
+      id="result"
+      style="border: 1px solid red; width: 400px; height: 200px"
+    ></div>
+  </body>
+</html>
+
+<!-- <script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    fetch("http://127.0.0.1:8080/getUserInfo").then((res) => {});
+  });
+</script> -->
+<script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    let name = document.querySelector("#name").value;
+    let workTime = document.querySelector("#workTime").value;
+    let payPerTime = document.querySelector("#payPerTime").value;
+
+    let url = `http://127.0.0.1:8080/payment`;
+    axios
+      .post(url, {
+        name: name,
+        workTime: workTime,
+        payPerTime: payPerTime,
+      })
+      .then((res) => {
+        console.log(res.data);
+        let formatResult = res.data.result.toLocaleString();
+        let result = `${res.data.name}님의 주급은 ${formatResult}원 입니다.`;
+        document.querySelector("#result").innerHTML = result;
+      })
+      .catch((msg) => {
+        console.log(msg);
+      });
+  });
+</script>

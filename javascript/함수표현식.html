@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>함수 표현삭</h1>
+
+    <button type="button" onclick="goCall1()">이벤트핸들러</button>
+    <br />
+    <button type="button" id="btnPress">이벤트핸들러</button>
+  </body>
+</html>
+
+<script>
+  window.onload = function () {
+    var btnPress = document.getElementById("btnPress"); //버튼 객체 주소가 저장된다
+    btnPress.addEventListener("click", function () {
+      alert("이벤트 핸들러 2222");
+    });
+  };
+
+  function goCall1() {
+    alert("이벤트 핸들러 1111");
+  }
+</script>

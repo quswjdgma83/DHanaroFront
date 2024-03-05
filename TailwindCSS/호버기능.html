@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <h1 class="py-1">호버기능 구현하기</h1>
+    <button class="bg-slate-300">Save change</button>
+    <br />
+    <button class="bg-slate-300 hover:bg-pink-500 p-4 m-1">Save change</button>
+  </body>
+</html>

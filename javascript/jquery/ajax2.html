@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>ajax html fetch버전</h1>
+
+    <div
+      id="result"
+      style="border: 1px solid red; width: 400px; height: 200px"
+    ></div>
+
+    <button type="button" id="btnSend">비동기 호출</button>
+  </body>
+</html>
+
+<!-- <script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    fetch("http://127.0.0.1:8080/getUserInfo").then((res) => {});
+  });
+</script> -->
+<script>
+  document.querySelector("#btnSend").addEventListener("click", () => {
+    fetch("http://127.0.0.1:8080/getUserInfo")
+      //   .then(response => {
+      //       if (!response.ok) {
+      //           throw new Error('네트워크 응답이 올바르지 않습니다.');
+      //       }
+      //       return response.json();
+      //   })
+      .then((res) => {
+        console.log(res);
+        return res.json(); //데이터만 다음 then 구문으로 전달됨
+      })
+      //   .then((data) => {
+      //     document.getElementById("result").innerHTML = `
+      //               <p>제목: ${data.title}</p>
+      //               <p>본문: ${data.body}</p>
+      //           `;
+      //   })
+      .then((data) => {
+        //데이터를 어떤 형태로 받아오는지 확인하기
+        console.log(typeof data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 중 에러 발생:", error);
+      });
+  });
+</script>

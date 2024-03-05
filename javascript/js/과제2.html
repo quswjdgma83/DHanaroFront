@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<br>
+    <button type="button" id="gameStart">게임시작</button> </br>
+    <button type="button" id="Gay" value="1" onclick={getUserChoice(this.value)}>가위</button>
+    <button type="button" id="By" value="2" onclick={getUserChoice(this.value)}>바위</button>
+    <button type="button" id="Bo" value="3" onclick={getUserChoice(this.value)}>보</button>
+    <div id="result" style="border: 1px blue;"></div>
+</body>
+</html>
+
+<script>
+    let rand = Math.ceil(Math.random()*3)
+    let GayByBo = {
+        1: "가위",
+        2: "바위",
+        3: "보"
+    }
+    let getUserChoice = function(value) {
+        switch(value) {
+            case "1" :
+                if (rand == 1) console.log("봇이 낸 것: ", GayByBo[rand], "무승부");
+                if (rand == 2) console.log("봇이 낸 것: ", GayByBo[rand], "패배");
+                if (rand == 3) console.log("봇이 낸 것: ", GayByBo[rand], "승리");
+                break;
+            case "2" :
+                if (rand == 1) console.log("봇이 낸 것: ", GayByBo[rand], "승리")
+                if (rand == 2) console.log("봇이 낸 것: ", GayByBo[rand], "무승부")
+                if (rand == 3) console.log("봇이 낸 것: ", GayByBo[rand], "패배")
+                break;
+            case "3" :
+                if (rand == 1) console.log("봇이 낸 것: ", GayByBo[rand], "패배")
+                if (rand == 2) console.log("봇이 낸 것: ", GayByBo[rand], "승리")
+                if (rand == 3) console.log("봇이 낸 것: ", GayByBo[rand], "무승부")
+                break;
+        }
+    }
+</script>

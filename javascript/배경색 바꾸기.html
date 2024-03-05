@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      type="button"
+      onclick="goChange(this)"
+      style="background-color: rgb(32, 138, 222)"
+    >
+      배경색 바꾸기
+    </button>
+    <button
+      type="button"
+      onclick="goChange(this)"
+      style="background-color: rgb(222, 138, 222)"
+    >
+      배경색 바꾸기
+    </button>
+    <button
+      type="button"
+      onclick="goChange(this)"
+      style="background-color: rgb(222, 205, 13)"
+    >
+      배경색 바꾸기
+    </button>
+  </body>
+</html>
+
+<script>
+  function goChange(me) {
+    console.log(event);
+    let body = document.getElementsByTagName("body")[0];
+    console.log(body);
+    body.style.backgroundColor = me.style.backgroundColor;
+    event.target.style.color = "#ff0000";
+  }
+</script>

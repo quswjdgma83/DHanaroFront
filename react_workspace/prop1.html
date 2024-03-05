@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>props: 데이터 부모 컴포넌트 => 자식컴포넌트</h1>
+    <p>
+      데이터 부모 => 자식(단방향), 자식 입장에서 부모의 함수를 호출하는 방식으로
+      부모한테 변화에 대한 알림을 준다. props는 <컴포넌트 key1="값" key2={변수}
+      key3={함수}/> 로 전달 가능하다. const {name, age, address} = {name:
+      "홍길동", age: 33, address: "서울시"}; 자식 컴포넌트 입장에서 props를
+      구조분해할당하여 받을 수 있다.
+    </p>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Parent() {
+        const [key2, setKey2] = React.useState("새로운키");
+
+        const parentFunc = () => {
+          alert("부모함수 호출");
+        };
+        return (
+          <>
+            <Child1 key1="test" parentFunc={parentFunc} />
+            <Child2 key1="test" parentFunc={parentFunc} />
+          </>
+        );
+      }
+
+      function Child1(props) {
+        return (
+          <>
+            <h1>{props.key1}</h1>
+            <button type="button" onClick={props.parentFunc}>
+              뭘봐1
+            </button>
+          </>
+        );
+      }
+
+      function Child2({ key1, parentFunc }) {
+        return (
+          <>
+            <h1 style={{ color: "red" }}>{key1}</h1>
+            <button type="button" onClick={parentFunc}>
+              뭘봐2
+            </button>
+          </>
+        );
+      }
+      ReactDOM.render(
+        <div>
+          <Parent />
+        </div>,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

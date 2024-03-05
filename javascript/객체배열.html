@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>객체배열</h1>
+  </body>
+</html>
+
+<script>
+  let person = [
+    { name: "홍길동", age: 23 },
+    { name: "임꺽정", age: 24 },
+    { name: "강조", age: 25 },
+    { name: "장길산", age: 33 },
+    { name: "홍경래", age: 43 },
+    { name: "이징옥", age: 83 },
+  ];
+
+  console.log(person[0].name);
+  console.log(person[0]["name"]);
+
+  //in 연산자를 사용해 보자
+  for (i in person) console.log(i, person[i].name, person[i].age);
+
+  for (ob of person) console.log(ob.name, ob.age);
+
+  //forEach - 많이 사용한다
+  person.forEach((e) => {
+    console.log(e.name, e.age);
+  });
+
+  //이름으로 검색을 하고싶다. 강조의 나이를 알고싶다.
+  let name = "강조";
+  let search = person.find((item) => {
+    console.log(typeof item); // type이 object이다
+    return item.name == name;
+  });
+  if (search == undefined) console.log(`${name}은 없습니다`);
+  else console.log(search.name, search.age);
+
+  //1. 30대 이상인 사람들 목록만 추출하기
+  let result = person.filter((item) => {
+    return item.age >= 30;
+  });
+  console.log(result);
+  //2. 30대 이상인 사람들은 모두 몇명이었는가?
+  console.log(result.length + "명");
+  //3. 성이 홍씨인 사람들 목록만 추출하기
+  let result2 = person.filter((item) => {
+    return item.name[0] == "홍";
+  });
+  console.log(result2);
+  //4. 성이 홍씨인 사람들의 나이의 합 구하기
+  let result3 = result2.reduce((sum, item) => {
+    console.log(sum, item.age);
+    return sum + item.age;
+  }, 0);
+
+  console.log(result3);
+</script>

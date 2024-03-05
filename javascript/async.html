@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>async를 이용해 쉽게 비동기함수 만들기</h1>
+  </body>
+</html>
+
+<script>
+  async function sigma(limit = 10) {
+    s = 0;
+    for (let i = 1; i <= limit; i++) {
+      s += await Promise.resolve(i);
+    }
+    return s;
+  }
+
+  sigma(100).then((result) => console.log(result));
+
+  console.log("뭘봐");
+
+  async function main() {
+    let result = await sigma(10);
+    console.log(result);
+    console.log("종료");
+  }
+
+  main();
+</script>

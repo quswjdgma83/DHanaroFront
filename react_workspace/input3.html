@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Input test</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      function InputTest() {
+        const [value1, setValue1] = React.useState("");
+        const [value2, setValue2] = React.useState("");
+        const [result, setResult] = React.useState();
+
+        const valueChange = (e) => {
+          if (e.target.id === "value1") setValue1(e.target.value);
+          else if (e.target.id === "value2") setValue2(e.target.value);
+        };
+
+        const calculateResult = (operation) => {
+          const num1 = parseFloat(value1);
+          const num2 = parseFloat(value2);
+          switch (operation) {
+            case "multiply":
+              setResult(num1 * num2);
+              break;
+            case "divide":
+              setResult(num1 / num2);
+              break;
+            case "add":
+              setResult(num1 + num2);
+              break;
+            case "subtract":
+              setResult(num1 - num2);
+              break;
+            default:
+              setResult("wdd");
+          }
+        };
+
+        return (
+          <div>
+            x값을 입력하세요:{" "}
+            <input type="text" id="value1" onChange={valueChange} />
+            <br />
+            y값을 입력하세요:{" "}
+            <input type="text" id="value2" onChange={valueChange} />
+            <br />
+            <button type="button" onClick={() => calculateResult("multiply")}>
+              곱하기
+            </button>
+            <button type="button" onClick={() => calculateResult("divide")}>
+              나누기
+            </button>
+            <button type="button" onClick={() => calculateResult("add")}>
+              더하기
+            </button>
+            <button type="button" onClick={() => calculateResult("subtract")}>
+              빼기
+            </button>
+            결과: <h2>{result}</h2>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<InputTest />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

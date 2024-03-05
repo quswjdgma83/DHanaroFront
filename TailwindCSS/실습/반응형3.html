@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                'tablet': '640px',                // => @media (min-width: 640px) { ... }
+                'laptop': '1024px',               // => @media (min-width: 1024px) { ... }
+                'desktop': '1280px',              // => @media (min-width: 1280px) { ... }
+                },
+            }
+        }
+      </script>
+</head>
+
+<body class="mx-10 my-10">
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
+        <div class="bg-orange-100 text-center p-2">01</div>
+        <div class="bg-orange-200 text-center p-2">02</div>
+        <div class="bg-orange-300 text-center p-2">03</div>
+        <div class="bg-orange-400 text-center p-2">04</div>
+        <div class="bg-orange-500 text-center p-2">05</div>
+        <div class="bg-orange-600 text-center p-2">06</div>
+        <div class="bg-orange-700 text-center p-2">07</div>
+        <div class="bg-orange-800 text-center p-2">08</div>
+        <div class="bg-orange-900 text-center p-2">09</div>
+    </div>
+
+</body>
+</html>

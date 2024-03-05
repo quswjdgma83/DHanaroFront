@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="input"
+      placeholder="숫자를 콤마로 구분하여 입력하세요"
+    />
+    <button id="btnSort">정렬</button>
+    <div id="result"></div>
+  </body>
+</html>
+
+<script>
+  window.onload = function () {
+    let btnSort = document.getElementById("btnSort");
+    btnSort.addEventListener("click", () => {
+      let input = document.getElementById("input").value; //데이터를 읽어오고
+      let temps = input.split(","); //문자열을 분리=>배열
+      temps = temps.map((item) => parseInt(item)); //type: string => value
+      let result = temps.sort((a, b) => a - b); // 정렬 비교함수
+      console.log(result);
+      result = result.join(","); //배열 => 문자열로
+      //배열을 주면 알아서 문자열로 바꾸는 기능도 있다.
+      document.getElementById("result").innerHTML = result;
+    });
+  };
+</script>

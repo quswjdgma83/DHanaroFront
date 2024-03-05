@@ -1,0 +1,92 @@
+typescript 기반의 리액트 앱 작성하기 
+npx create-react-app  typehome --template typescript
+cd typehome
+npm install bootstrap
+npm install axios 
+npm install react-router-dom 
+useReducer : 함수를 외부로 빼내기 위한것, 아무데서나 사용가능하도록 
+useContext : context - 어플리케이션 그 자체로 
+                 전역객체를 만들고자 할때 사용한다. 많이는 아니지만 필요할 경우가 있다 
+                 로그온 아이디나 이름을 저장해두고 다르곳에서 사용한다던지 
+                 F5 버튼 누르면 없어짐 , 세션이나 쿠키나 로컬스토리지 
+                세션에 서버에 저장되는객체, 모든 클라이언트마다 만들어짐 
+                          로그온정보나 장바구니 정보 
+                쿠키는 클라이언트에게 저장되는 객체,모든 클라이언트마다 만들어짐 
+                          로그온정보나 장바구니 정보 . 보안문제가 발생해서 10년넘게 
+                          사용안함 
+                로컬스토리지 - html5에서 추가, 쿠키보다 보안 강화, 인터넷 끊어져도 
+                         사용가능 
+  
+useContext  기본 사용법 
+                1. createContext로 컨텍스트개체를 생성한다. 
+                   값이나 함수등을 전달을 해야 한다 
+                   context.Provider로 해야 한다 value속성으로 
+                  value속성에 값 전달, json등을 통해서 값전달을 가능한데 
+                  let MyContext = createContext();
+                  MyContext.Provider가 자체적으로 만들어진다. 
+                  <MyContext.Provider value={값이나 JSON객체등}>
+                       .... 동일 컨텍스트를 소유할 컴포넌트들 
+                  </MyContext.Provider>
+                   이럴경우에는 value의 값 변경불가 
+                   
+                2. Provider를 커스터마이징 한다   
+                const AppProvider = ({children}:{children:any})=>{
+                 // 필요한 state나 함수들을 저장한다 
+                    return(
+                        <MyContext.Provider value={{state, dispatch}}>
+                          {children}
+                        </MyContext.Provider>
+                   );
+               }   
+                3. F5를 누르면 컨텍스트에 저장된 값이 없어진다. (세션, 쿠키, 로컬스토리지)등에 
+                  저장을 해야 한다 
+                  저장시 : localStorage.setItem(key, JSON.stringify(state)); 
+                  가져올때 :let result = JSON.parse(localStorage.getItem(key));
+                 
+        2번 항목에서 reducer를 사용함 
+                초기상태와 처리함수들을 묶어서 처리함 
+        
+               const initalState:StateType={userid:"", username:"", isLogon:false}
+              //Reducer 따로 생성 
+function LogonReducer(state:StateType, action:LogonAction):StateType
+{
+    switch(action.type)
+    {
+        case "LOGON":
+            {
+                //jsonplaceholder에 /user
+                //fetch나 axios써서 갖고 데이터 갖고 와서 로그온 작업 제대로 
+                //userid 가져와서 axios 를 이용해서 api서버와 통신후 
+                //가져온 값을 넣는다 return 시점이 then 안에서 하거나 
+                //async, await 를 사용해야 한다 
+                let newState =  {...state, userid:action.value.userid, 
+                    username:"홍길동", 
+                    isLogon:true};
+                //F5 누르면 날아감 
+                saveStateToLocalStorage("appState", newState);
+                return newState;
+            }
+        case "LOGOUT":
+            {
+                let newState =  {...state, userid:"", username:"", 
+                    isLogon:false};
+                saveStateToLocalStorage("appState", newState);
+                return newState;
+            }
+        case "RESET":
+            return initalState;
+        default:
+            throw new Error("알수없는 액션입니다.");     
+    }
+}
+      프로바이더 내에서    
+      const [state, dispatch] = useReducer(LogonReducer, initalState); 
+               state :항상 최신의 상태로 유지된다.(새로 state가 바뀌어도 저장하고 있다) 
+               dispatch -> reducer를 호출해야 한다. 
+      useReducer( LogonReducer , 초기상태)  
+      
+      사용시에는 
+      let myContext = useContext(MyContext); 
+      myContext.state
+      myContext.dispatch 가 있다 
+          

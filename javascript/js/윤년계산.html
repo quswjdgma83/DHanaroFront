@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>프롬프트</h1>
+  </body>
+</html>
+
+<script>
+  let x = prompt("윤년테스트, 연도를 입력하세요 ", 2024);
+
+  //esc
+  if (x != null) {
+    //둘다 제대로 입력되었을 때
+    let a = parseInt(x);
+    if (a % 4 === 0) {
+      if (a % 100 === 0) {
+        if (a % 400 === 0) {
+          alert("윤년입니다.");
+        }
+        alert("윤년이 아닙니다");
+      }
+      alert("윤년입니다");
+    } else if (a % 4 !== 0) alert("윤년이 아닙니다");
+  } else {
+    alert("취소를 선택하셨습니다.");
+  }
+</script>

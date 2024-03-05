@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/svelte@3.44.0/dist/browser/runtime.js"></script>
+    <script src="https://unpkg.com/svelte@3.44.0/dist/browser/index.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="mx-10 my-10">
+    <div>
+      <ul role="list" class="p-6 divide-y divide-slate-200">
+        <li class="flex py-4 first:pt-0 last:pb-0">
+          <img class="h-10 w-10 rounded-full" src="images/tree.png"" alt="" />
+          <div class="ml-3 overflow-hidden">
+            <p class="text-sm font-medium text-slate-900">{person.name}</p>
+            <p class="text-sm text-slate-500 truncate">hong@ddd.com</p>
+          </div>
+        </li>
+      </ul>
+
+      <nav className="flex sm:justify-center space-x-4">
+        {[ ['Home', '/dashboard'], ['Team', '/team'], ['Projects', '/projects'],
+        ['Reports', '/reports'], ].map(([title, url]) => (
+        <a
+          href="{url}"
+          className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+          >{title}</a
+        >
+        ))}
+      </nav>
+    </div>
+  </body>
+</html>

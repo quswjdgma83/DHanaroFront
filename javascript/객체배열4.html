@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>객체배열4</h1>
+  </body>
+</html>
+
+<script>
+  let board = {
+    totalCnt: "15",
+    pg: 2,
+    boardList: [
+      {
+        id: 1,
+        title: "wpahr1",
+        writer: "홍길동",
+        content: "내용1",
+        wdate: "2024-01-26",
+      },
+      {
+        id: 2,
+        title: "wpahr2",
+        writer: "이몽룡",
+        content: "내용2",
+        wdate: "2024-01-27",
+      },
+      {
+        id: 3,
+        title: "wpahr3",
+        writer: "성춘향",
+        content: "내용3",
+        wdate: "2024-01-28",
+      },
+      {
+        id: 4,
+        title: "wpahr4",
+        writer: "임꺽정",
+        content: "내용4",
+        wdate: "2024-01-29",
+      },
+      {
+        id: 5,
+        title: "wpahr5",
+        writer: "박두순",
+        content: "내용5",
+        wdate: "2024-01-30",
+      },
+      {
+        id: 6,
+        title: "wpahr6",
+        writer: "윤보라",
+        content: "내용6",
+        wdate: "2024-01-31",
+      },
+      {
+        id: 7,
+        title: "wpahr7",
+        writer: "김철수",
+        content: "내용7",
+        wdate: "2024-02-01",
+      },
+      {
+        id: 8,
+        title: "wpahr8",
+        writer: "정영희",
+        content: "내용8",
+        wdate: "2024-02-02",
+      },
+      {
+        id: 9,
+        title: "wpahr9",
+        writer: "송민호",
+        content: "내용9",
+        wdate: "2024-02-03",
+      },
+      {
+        id: 10,
+        title: "wpahr10",
+        writer: "김태희",
+        content: "내용10",
+        wdate: "2024-02-04",
+      },
+    ],
+  };
+
+  console.log("전체 데이터 개수 : ", board.totalCnt);
+  console.log("현재 페이지 : ", board.pg);
+  console.log("데이터 출력하기");
+  board.boardList.forEach((item) => console.log(item));
+</script>

@@ -1,0 +1,128 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const weeklySalary = [
+    { name: 홍길동, workTime: 40, payPerTime: 10000 },
+    { name: 임꺽정, workTime: 30, payPerTime: 20000 },
+    { name: 장길산, workTime: 20, payPerTime: 20000 },
+    { name: 김미영, workTime: 15, payPerTime: 30000 },
+  ];
+
+  function calcSalary(workTime, payPerTime) {
+    let salary;
+    if (workTime >= 20) {
+      let bonusTime = workTime - 20;
+      salary = workTime * payPerTime + bonusTime * payPerTime * 1.5;
+    } else {
+      salary = workTime * payPerTime;
+    }
+    return salary.toLocaleString();
+  }
+
+  function tableShow(salaryTable) {
+    return (
+      <table>
+        <tr>
+          <th>이름</th>
+          <th>시간</th>
+          <th>시간당급여액</th>
+          <th>주급</th>
+        </tr>
+        {salaryTable.map((item) => {
+          <tr>
+            <td>{item.name}</td>
+            <td>{item.workTime}</td>
+            <td>{item.payPerTime}</td>
+            <td>{calcSalary(item.workTime, item.payPerTime)}</td>
+          </tr>;
+        })}
+      </table>
+    );
+  }
+</script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <body>
+    <script>
+      const weeklySalary = [
+        { name: "홍길동", workTime: 40, payPerTime: 10000 },
+        { name: "임꺽정", workTime: 30, payPerTime: 20000 },
+        { name: "장길산", workTime: 20, payPerTime: 20000 },
+        { name: "김미영", workTime: 15, payPerTime: 30000 },
+      ];
+
+      function calcSalary(workTime, payPerTime) {
+        let salary;
+        if (workTime >= 20) {
+          let bonusTime = workTime - 20;
+          salary = 20 * payPerTime + bonusTime * payPerTime * 1.5;
+        } else {
+          salary = workTime * payPerTime;
+        }
+        return salary.toLocaleString();
+      }
+
+      function tableShow(salaryTable) {
+        let tableHtml =
+          "<table><tr><th>이름</th><th>시간</th><th>시간당급여액</th><th>주급</th></tr>";
+        salaryTable.forEach((item) => {
+          tableHtml += `<tr><td>${item.name}</td><td>${
+            item.workTime
+          }</td><td>${item.payPerTime.toLocaleString()}</td><td>${calcSalary(
+            item.workTime,
+            item.payPerTime
+          )} 만원</td></tr>`;
+        });
+        tableHtml += "</table>";
+        return tableHtml;
+      }
+
+      document.body.innerHTML = tableShow(weeklySalary);
+    </script>
+  </body>
+</html>

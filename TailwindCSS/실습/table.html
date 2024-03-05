@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+</head>
+
+
+<body class="mx-10 my-10">
+
+  <nav class="flex justify-center space-x-4">
+    <a href="/dashboard" class="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Home</a>
+    <a href="/team" class="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Team</a>
+    <a href="/projects" class="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Projects</a>
+    <a href="/reports" class="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Reports</a>
+  </nav>
+
+
+    <div class="mt-3">
+        <table class="table table-auto w-9/12 mx-auto">
+            <thead>
+                <tr class="bg-orange-100 h-9">
+                  <th>이름</th>
+                  <th>이메일</th>
+                  <th>전화번호</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd:bg-white even:bg-slate-100">
+                  <td class="pl-2">홍길동</td>
+                  <td>hong@gmail.com</td>
+                  <td>010-0000-0000</td>
+                </tr>
+                <tr class="odd:bg-white even:bg-slate-100">
+                    <td class="pl-2">홍길동</td>
+                    <td>hong@gmail.com</td>
+                    <td>010-0000-0000</td>
+                </tr>
+                <tr class="odd:bg-white even:bg-slate-100">
+                    <td class="pl-2">홍길동</td>
+                    <td>hong@gmail.com</td>
+                    <td>010-0000-0000</td>
+                </tr>
+                <tr class="odd:bg-white even:bg-slate-100">
+                    <td class="pl-2">홍길동</td>
+                    <td>hong@gmail.com</td>
+                    <td>010-0000-0000</td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>

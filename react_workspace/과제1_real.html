@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <App />
+        </div>,
+        document.getElementById("root")
+      );
+      function App() {
+        const [userInfoList, setUserInfoList] = React.useState([]);
+        const [userInfo, setUserInfo] = React.useState({
+          name: "홍길동",
+          kor: "",
+          eng: "",
+          math: "",
+        });
+        //<input value={userInfo.name}  ~~~~~~
+        //JSON해체하기
+        const { name, kor, eng, math } = userInfo; //모던스크립트의 해체
+        //name = userInfo.name;
+        //phone = userInfo.phone;
+        //email = userInfo.email;
+        const nameChange = (e) => {
+          setUserInfo({ ...userInfo, name: e.target.value });
+        };
+        const koreanChange = (e) => {
+          setUserInfo({ ...userInfo, kor: e.target.value });
+        };
+        const englishChange = (e) => {
+          setUserInfo({ ...userInfo, eng: e.target.value });
+        };
+        const mathChange = (e) => {
+          setUserInfo({ ...userInfo, math: e.target.value });
+        };
+        const append = () => {
+          //userInfoList->배열
+          setUserInfoList(userInfoList.concat(userInfo)); //추가
+          setUserInfo({ name: "", kor: "", eng: "", math: "" });
+          window.document.querySelector("#name").focus();
+        };
+        return (
+          <div>
+            이름 :{" "}
+            <input id="name" type="text" onChange={nameChange} value={name} />
+            <br />
+            국어 : <input type="text" onChange={koreanChange} value={kor} />
+            <br />
+            영어 : <input type="text" onChange={englishChange} value={eng} />
+            <br />
+            수학 : <input type="text" onChange={mathChange} value={math} />
+            <br />
+            <button type="button" onClick={append}>
+              추가
+            </button>
+            <hr />
+            <table>
+              {userInfoList.map((item, key) => {
+                let total =
+                  parseInt(item.kor) + parseInt(item.eng) + parseInt(item.math);
+                let avg = (total / 3).toFixed(2);
+                return (
+                  <tr key={key}>
+                    <td>{item.name}</td>
+                    <td>{item.kor}</td>
+                    <td>{item.eng}</td>
+                    <td>{item.math}</td>
+                    <td>{total}</td>
+                    <td>{avg}</td>
+                  </tr>
+                );
+              })}
+            </table>
+          </div>
+        );
+      }
+    </script>
+  </body>
+</html>

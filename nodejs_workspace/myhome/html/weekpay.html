@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form action="/workpay_result" id="myform2">
+      name: <input type="text" name="name" id="" /> > <br />
+      work time: <input type="text" name="work_time" id="" /> > <br />
+      per pay: <input type="text" name="per_pay" id="" /> > <br />
+      <br />
+      <button type="button" id="btnCalc">계산하기</button>
+    </form>
+
+    <h1>주급계산</h1>
+
+    이름 : <input type="text" name="name" id="name" /> <br />
+    근무시간 : <input type="text" name="work_time" id="work_time" /> <br />
+    시급 : <input type="text" name="per_pay" id="per_pay" /> <br />
+
+    <div id="result" />
+    <button type="button" id="btnCalculation">계산하기ajax</button>
+  </body>
+</html>
+
+<script>
+  window.onload = () => {
+    document.getElementById("btnCalc").addEventListener("click", () => {
+      let frm = document.getElementById("myform2"); //버전 상관없이 가능
+      frm.action = `/weekpay_result`; //서버에서 응답할 url 지정
+      frm.method = "GET"; //서버 전송방법, 안쓰면 무조건 GET방식임
+      frm.submit(); //서버로 전송하기
+    });
+  };
+
+  document.querySelector("#btnCalculation").addEventListener("click", () => {
+    let params =
+      "name" +
+      document.querySelector("#name").value +
+      document.querySelector("#work_time").value +
+      document.querySelector("#per_pay").value;
+    axios
+      .get(`/weekpay_proc`, {
+        params: {
+          name: document.querySelector("#name").value,
+          work_time: document.querySelector("#work_time").value,
+          per_pay: document.querySelector("#per_pay").value,
+        },
+      })
+      .then(function (response) {
+        let data = response.data;
+        document.querySelector(
+          "#result"
+        ).innerHTML = `${data.name}의 주급은 ${data.week_pay}입니다`;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  });
+</script>
+
+<!-- 
+<a href="/weekpay">주급계산</a>
+  weekpay.html
+  name
+  work_time
+  per_pay
+  weekpay_result.html -->

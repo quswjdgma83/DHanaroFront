@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>이벤트 처리</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      function MyComponent() {
+        //onClick = {함수주소}
+        const click = () => {
+          alert("클릭");
+        };
+
+        return (
+          <div>
+            <button type="button" onClick={click}>
+              이벤트 발생
+            </button>
+            <button type="button" onClick={alert("이벤트발생")}>
+              이벤트 발생2
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                alert("이벤트발생");
+              }}
+            >
+              이벤트 발생3
+            </button>
+          </div>
+        );
+      }
+
+      ReactDOM.render(
+        <div>
+          <MyComponent />
+        </div>,
+        document.getElementById("root") //두번째 매개변수 - 시작 태그 객체
+      );
+    </script>
+  </body>
+</html>

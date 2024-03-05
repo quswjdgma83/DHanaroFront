@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="myform" action="" method="post">
+      제목: <input type="text" name="title" id="title" /> <br />
+      작성자: <input type="text" name="writer" id="writer" /> <br />
+      내용: <input type="text" name="content" id="content" /> <br />
+
+      <button type="button" id="btnSend">등록</button>
+    </form>
+  </body>
+</html>
+
+<script>
+  window.onload = () => {
+    document.querySelector("#btnSend").addEventListener("click", () => {
+      let frm = document.myform;
+      frm.action = "/board/write";
+      frm.method = "POST";
+      frm.submit(); //서버로 보내라
+    });
+  };
+</script>
